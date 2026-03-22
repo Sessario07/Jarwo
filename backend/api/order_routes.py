@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from uuid import UUID
 from pydantic import BaseModel
+from models.order_model import OrderModel
 from services.order_service import OrderService
 
 router = APIRouter(prefix="/api/orders", tags=["orders"])
