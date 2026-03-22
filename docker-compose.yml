@@ -48,7 +48,7 @@ services:
 
   frontend:
     build:
-      context: ./frontend/frontend
+      context: ./frontend
       dockerfile: Dockerfile
     networks:
       - internal
