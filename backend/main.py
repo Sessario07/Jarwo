@@ -6,6 +6,7 @@ import os
 
 from api import health_routes, ollama_routes, order_routes, item_routes
 from core.database import init_db_pool, close_db_pool, set_db_pool, get_db_pool
+from api import health_routes, ollama_routes, order_routes, item_routes, twilio_routes
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -33,6 +34,7 @@ app.include_router(health_routes.router)
 app.include_router(ollama_routes.router)
 app.include_router(order_routes.router)
 app.include_router(item_routes.router)
+app.include_router(twilio_routes.router)
 
 @app.get("/")
 async def root():
