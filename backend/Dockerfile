@@ -12,5 +12,6 @@ COPY core/ ./core/
 COPY models/ ./models/
 COPY repositories/ ./repositories/
 COPY services/ ./services/
+COPY scripts/ ./scripts/
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

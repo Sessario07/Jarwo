@@ -6,3 +6,4 @@ asyncpg==0.29.0
 SQLAlchemy==2.0.25
 psycopg2-binary==2.9.9
 httpx==0.25.2
+faker>=24.0.0
