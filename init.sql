@@ -6,7 +6,7 @@ CREATE TABLE items (
     item_name VARCHAR(255) NOT NULL,
     item_customer_price NUMERIC(12,2) NOT NULL,
     item_seller_price NUMERIC(12,2) NOT NULL,
-    item_link TEXT NOT NULL
+    item_link TEXT NOT NULL,
     item_subtitle TEXT,
     is_highlighted BOOLEAN DEFAULT FALSE
 );
