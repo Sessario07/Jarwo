@@ -34,6 +34,12 @@ async def create_item(request: CreateItemRequest):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
+@router.get("/highlighted")
+async def get_highlighted():
+    item = await ItemRepository.get_highlighted_items()
+    if not item:
+        return {"error": "No highlighted item found"}
+    return item
 
 @router.get("/{item_id}")
 async def get_item(item_id: UUID):
@@ -75,7 +81,6 @@ async def update_item(item_id: UUID, request: UpdateItemRequest):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-
 @router.delete("/{item_id}")
 async def delete_item(item_id: UUID):
     try:
@@ -87,10 +92,3 @@ async def delete_item(item_id: UUID):
         raise
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
-
-@router.get("/highlighted")
-async def get_highlighted():
-    item = await ItemRepository.get_highlighted_items()
-    if not item:
-        return {"error": "No highlighted item found"}
-    return item

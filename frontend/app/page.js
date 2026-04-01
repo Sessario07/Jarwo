@@ -8,7 +8,7 @@ export default async function LandingPage() {
       cache: "no-store"
     });
     const data = await resHighlighted.json();
-    if (!data.error) highlightedItem = data;
+    if (resHighlighted.ok && !data.error && !data.detail) highlightedItem = data;
   } catch (_) {}
 
   let normalItems = [];
