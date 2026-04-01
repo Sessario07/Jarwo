@@ -87,3 +87,10 @@ async def delete_item(item_id: UUID):
         raise
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+@router.get("/highlighted")
+async def get_highlighted():
+    item = await ItemRepository.get_highlighted_items()
+    if not item:
+        return {"error": "No highlighted item found"}
+    return item
