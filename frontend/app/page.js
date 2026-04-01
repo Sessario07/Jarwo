@@ -84,7 +84,6 @@ export default async function LandingPage() {
                   <h3 className="product-name">{item.name}</h3>
                   <div className="product-footer">
                     <span className="product-price">Rp {Number(item.price).toLocaleString('id-ID')}</span>
-                    <button className="add-btn" title="Tambah ke keranjang">+</button>
                   </div>
                 </div>
               </div>
