@@ -94,3 +94,15 @@ class ItemRepository:
         query = "DELETE FROM items WHERE item_id = $1"
         result = await pool.execute(query, item_id)
         return "1" in result
+
+    @staticmethod
+    async def get_highlighted_items() -> dict:
+        pool = get_db_pool()
+        query = """
+            SELECT item_id, item_name AS title, item_subtitle AS subtitle, item_customer_price AS price, item_link AS image
+            FROM items
+            WHERE is_highlighted = true 
+            LIMIT 1
+        """
+        result = await pool.fetchrow(query)
+        return dict(result) if result else None

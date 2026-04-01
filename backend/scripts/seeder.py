@@ -10,8 +10,8 @@ fake = Faker()
 async def seed_items(pool, count=10):
     print(f"Seeding {count} items...")
     query = """
-        INSERT INTO items (item_name, item_customer_price, item_seller_price, item_link)
-        VALUES ($1, $2, $3, $4)
+        INSERT INTO items (item_name, item_customer_price, item_seller_price, item_link, item_subtitle, is_highlighted)
+        VALUES ($1, $2, $3, $4, $5, $6)
         RETURNING item_id
     """
     inserted_ids = []
@@ -24,7 +24,9 @@ async def seed_items(pool, count=10):
             fake.word().capitalize() + " " + fake.word().capitalize(),
             customer_price,
             seller_price,
-            fake.url()
+            fake.url(),
+            fake.sentence(nb_words=8),
+            False
         )
         inserted_ids.append(item_id)
     print("Items seeded SUCCESSFULLY!")
